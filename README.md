@@ -18,7 +18,7 @@ Use the the [gufo2alloy](https://github.com/OntoUML/gufo2alloy) converter to gen
 
 Generate simulations.
 
-Convert the input model (`.rdf` format) and the generated [simulations](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/simulations)) through the [probfoil converter](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/converter).
+Convert the input model (`.rdf` format) and the generated [simulations](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/simulations) through the [probfoil converter](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/converter).
 
 Generate .data and .settings probfoil input files with the corresponding .py files:
 
