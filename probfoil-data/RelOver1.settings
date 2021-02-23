@@ -1,0 +1,63 @@
+% Modes
+% mode(interrogation(+)).
+% mode(crimeinvestigation(+)).
+% mode(witness(+)).
+% mode(interrogation(-)).
+% mode(crimeinvestigation(-)).
+% mode(witness(-)).
+% mode(suspect(+)).
+% mode(suspect(-)).
+% mode(detective(+)).
+% mode(detective(-)).
+% mode(leaddetective(+)).
+% mode(leaddetective(-)).
+% mode(seniordetective(+)).
+% mode(seniordetective(-)).
+% mode(juniordetective(+)).
+% mode(juniordetective(-)).
+% mode(contributesto(+,+)).
+% mode(contributesto(+,-)).
+% mode(contributesto(-,+)).
+% mode(questions(+,+)).
+% mode(questions(-,-)).
+% mode(questions(+,+)).
+% mode(questions(+,-)).
+% mode(questions(-,+)).
+% mode(involveswitness(+,+)).
+% mode(involveswitness(+,-)).
+% mode(involveswitness(-,+)).
+% mode(involvesdetective(+,+)).
+% mode(involvesdetective(-,+)).
+% mode(involvesdetective(+,-)).
+% mode(conductedby(+,+)).
+% mode(conductedby(+,-)).
+% mode(conductedby(-,+)).
+% mode(isledby(+,+)).
+% mode(isledby(+,-)).
+% mode(isledby(-,+)).
+mode(involvessuspect(+,+)).
+mode(involvessuspect(+,-)).
+mode(involvessuspect(-,+)).
+
+% Type definitions
+base(witness(person)).
+base(suspect(person)).
+base(crimeinvestigation(relator)).
+base(interrogation(relator)).
+base(leaddetective(detective)).
+base(seniordetective(detective)).
+base(juniordetective(detective)).
+base(detective(person)).
+base(isledby(crimeinvestigation,detective)).
+base(involvesdetective(crimeinvestigation,person)).
+base(conductedby(interrogation,person)).
+base(questions(interrogation,person)).
+base(involveswitness(crimeinvestigation,person)).
+base(involvessuspect(crimeinvestigation,person)).
+base(contributesto(interrogation,crimeinvestigation)).
+
+% Target
+learn(involvesdetective/2).
+
+% How to generate negative examples
+% example_mode(closed).
