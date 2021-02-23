@@ -1,4 +1,12 @@
 # ConstraintLearning-SoSyM2021
 ConstraintLearning-SoSyM2021 Paper: Data and Processes 
 
-## Installation ![PyPI - Python Version]
+## Installation
+
+Python 3.x needed.
+
+```bash
+$ pip install problog
+$ pip install probfoil
+$ pip install regex
+```
