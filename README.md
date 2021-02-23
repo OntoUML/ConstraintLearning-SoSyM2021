@@ -2,7 +2,9 @@
 ConstraintLearning-SoSyM2021 Paper: Data and Processes.  
 
 ## Quickstart Guide 
-Install python 3.x needed.
+Install python 3.x.
+
+Install the following linraries:
 
 ```bash
 $ pip install problog
@@ -12,13 +14,13 @@ $ pip install pandas
 $ pip install owlready2
 ```
 
-Take any OntoUML model generated through [Visual Paradigm](https://www.visual-paradigm.com/), install the [onto-vp-plugin](https://github.com/OntoUML/ontouml-vp-plugin) to convert it into `.ttl` (or `.rdf`, `.owl`) format (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples).
+Take any OntoUML model generated through [Visual Paradigm](https://www.visual-paradigm.com/), install the [onto-vp-plugin](https://github.com/OntoUML/ontouml-vp-plugin) to convert the model into `.ttl` (or `.rdf`, `.owl`) format (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples).
 
-Use the the [gufo2alloy](https://github.com/OntoUML/gufo2alloy) converter to generate Alloy `.als` specifications (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples). 
+Run the the [gufo2alloy](https://github.com/OntoUML/gufo2alloy) converter to generate Alloy `.als` specifications (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples). 
 
-Generate simulations.
+Customize the simulations scope. Run simulations. Save the output simulations into `.txt` files.
 
-Convert the input model (`.rdf` format) and the generated [simulations](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/simulations) through the [probfoil converter](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/converter).
+Use the input model (`.rdf` format) and the generated `.txt` [simulations](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/simulations) as inputs of the [probfoil converter](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/converter).
 
 Generate .data and .settings probfoil input files with the corresponding .py files:
 
