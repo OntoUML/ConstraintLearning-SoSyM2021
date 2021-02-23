@@ -8,19 +8,20 @@ Python 3.x needed.
 $ pip install problog
 $ pip install probfoil
 $ pip install regex
+$ pip install pandas
 $ pip install owlready2
 ```
 
 ## Quickstart 
-Take any OntoUML generated through [Visual Paradigm](https://www.visual-paradigm.com/), install the [onto-vp-plugin](https://github.com/OntoUML/ontouml-vp-plugin) to convert it into `.ttl` (or `.rdf`, `.owl`) format (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model)).
+Take any OntoUML model generated through [Visual Paradigm](https://www.visual-paradigm.com/), install the [onto-vp-plugin](https://github.com/OntoUML/ontouml-vp-plugin) to convert it into `.ttl` (or `.rdf`, `.owl`) format (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples).
 
-Use the the [gufo2alloy](https://github.com/OntoUML/gufo2alloy) converter to generate Alloy `.als` specifications (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model)). 
+Use the the [gufo2alloy](https://github.com/OntoUML/gufo2alloy) converter to generate Alloy `.als` specifications (see [related model](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/model) examples). 
 
 Generate simulations.
 
 Convert the input model (`.rdf` format) and the generated [simulations](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/simulations)) through the [probfoil converter](https://github.com/OntoUML/ConstraintLearning-SoSyM2021/tree/main/converter).
 
-Generate .data and .settings files with the corresponding .py files:
+Generate .data and .settings probfoil input files with the corresponding .py files:
 
 ```bash
 python file.py > output.txt
