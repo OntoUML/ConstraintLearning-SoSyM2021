@@ -4,7 +4,7 @@ ConstraintLearning-SoSyM2021 Paper: Data and Processes.
 ## Quickstart Guide 
 Install python 3.x.
 
-Install the following linraries:
+Install the following libraries:
 
 ```bash
 $ pip install problog
