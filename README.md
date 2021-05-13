@@ -1,5 +1,5 @@
-# ConstraintLearning-SoSyM2021
-ConstraintLearning-SoSyM2021 Paper: Data and Processes.  
+# ConstraintLearning-2021
+ConstraintLearning-2021 Paper: Data and Processes.  
 
 ## Quickstart Guide 
 Install python 3.x.
