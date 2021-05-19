@@ -1,0 +1,83 @@
+% Modes
+% mode(interrogation(+)).
+% mode(crimeinvestigation(+)).
+% mode(witness(+)).
+% mode(suspect(+)).
+% mode(detective(+)).
+% mode(leaddetective(+)).
+% mode(seniordetective(+)).
+% mode(superintendent(+)).
+% mode(juniordetective(+)).
+% mode(contributesto(+,+)).
+% mode(contributesto(+,-)).
+% mode(contributesto(-,+)).
+% mode(questions(+,+)).
+% mode(questions(+,-)).
+% mode(questions(-,+)).
+% mode(manages(+,+)). 
+% mode(manages(+,-)). 
+% mode(manages(-,+)). 
+% mode(manages_(+,+)). 
+% mode(manages_(+,-)). 
+% mode(manages_(-,+)). 
+% mode(teamsup(+,-)).
+% mode(teamsup(-,+)).
+% mode(teamsup(+,+)).
+% mode(involveswitness(+,+)).
+% mode(involveswitness(+,-)).
+% mode(involveswitness(-,+)).
+% mode(involvesdetective(-,+)).
+% mode(involvesdetective(+,-)).
+% mode(involvesdetective(-,+)).
+% mode(conductedby(+,+)).
+% mode(conductedby(+,-)).
+% mode(conductedby(-,+)).
+% mode(isledby(+,+)).
+% mode(isledby(+,-)).
+% mode(isledby(-,+)).
+% mode(involvessuspect(+,+)).
+% mode(involvessuspect(+,-)).
+% mode(involvessuspect(-,+)).
+% mode(eq(+,+)). %%%%%%
+% mode(eq(-,+)). %%%%%%
+% mode(eq(+,-)). %%%%%%
+mode(teamsup_(+,-)). %%%%%%
+mode(teamsup_(-,+)). %%%%%%
+mode(teamsup_(+,+)). %%%%%%
+
+% Type definitions
+base(witness(person)).
+base(suspect(person)).
+base(crimeinvestigation(relator)).
+base(interrogation(relator)).
+base(leaddetective(person)).
+base(seniordetective(person)).
+base(juniordetective(person)).
+base(detective(person)).
+base(isledby(crimeinvestigation,person)).
+base(involvesdetective(crimeinvestigation,person)).
+base(conductedby(interrogation,person)).
+base(questions(interrogation,person)).
+base(involveswitness(crimeinvestigation,person)).
+base(involvessuspect(crimeinvestigation,person)).
+base(contributesto(interrogation,crimeinvestigation)).
+base(superintendent(person)).
+base(manages(person,person)).
+base(teamsup(person,person)).
+base(not_juniordetective(person)).
+base(not_conductedby(interrogation,person)).
+base(not_involvesdetective(crimeinvestigation,person)).
+base(not_involveswitness(crimeinvestigation,person)).
+base(not_isledby(crimeinvestigation,person)).
+base(fact(person,teamsup,person)). %%%%%%
+base(teamsup_(person,person)). %%%%%%
+base(manages_(person,person)).
+base(eq(person,person)). %%%%%%
+
+% Target
+learn(teamsup/2).
+
+% How to generate negative examples - (comment to change result)
+%example_mode(closed).
+example_mode(open).
+%example_mode(auto).

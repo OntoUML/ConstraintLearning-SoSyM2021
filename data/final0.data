@@ -1,0 +1,514 @@
+%+7 configurations
+
+%https://github.com/wannesm/PySDD
+%Python >=3.6
+%Problog
+%Probfoil
+%Cython
+%PySDD
+
+% neg raising when there is only one neg literal in the body and more positive, group with negation!!
+%(a & -b) -> c
+%-(-a or b) -> c
+% neg raising (-a or b) -> -c
+% (-c V a) & (-c V -b)
+% c -> a & -(c & b)
+
+%PICK-UP a FRAGMENT TECHNIQUE
+%identify a predicate
+%for each intended sim pick up the right FRAGMENT (see points 1) and 2) below)
+%for each unintended
+%identify negative predicate
+%if there are other predicates involved (see relations) mark them as positive
+%underline conflict
+%we have just two options: 
+%1) negative because something is missing - (1, 1 is ok 1 is missing and so on)
+%2) negative because is conflicting with other(s) - (1, 1 is ok and one is conflicting, and so on)
+%FOR EACH ELICITED negative pattern populate the data file
+
+%intended0
+1.0::criminalinvestigation(criminalinvestigation_xa0).
+1.0::involvesdetective(criminalinvestigation_xa0,person_xa2).
+1.0::involvesdetective(criminalinvestigation_xa0,person_xa3).
+1.0::involvesdetective(criminalinvestigation_xa0,person_xa4).
+1.0::involvessuspect(criminalinvestigation_xa0,person_xa1).
+1.0::involveswitness(criminalinvestigation_xa0,person_xa0).
+1.0::isledby(criminalinvestigation_xa0,person_xa2).
+1.0::interrogation(interrogation_xa0).
+1.0::interrogation(interrogation_xa1).
+1.0::conductedby(interrogation_xa0,person_xa2).
+1.0::conductedby(interrogation_xa1,person_xa2).
+1.0::contributesto(interrogation_xa0,criminalinvestigation_xa0).
+1.0::contributesto(interrogation_xa1,criminalinvestigation_xa0).
+1.0::questions(interrogation_xa0,person_xa0).
+1.0::questions(interrogation_xa1,person_xa0).
+1.0::detective(person_xa2).
+1.0::detective(person_xa3).
+1.0::detective(person_xa4).
+1.0::juniordetective(person_xa3).
+1.0::juniordetective(person_xa4).
+1.0::teamsup(person_xa3,person_xa4).
+1.0::teamsup(person_xa4,person_xa3).
+1.0::seniordetective(person_xa2).
+1.0::manages(person_xa2,person_xa3).
+1.0::manages(person_xa2,person_xa4).
+1.0::leaddetective(person_xa2).
+1.0::superintendent(person_xa2).
+1.0::suspect(person_xa1).
+1.0::witness(person_xa0).
+%intended1
+1.0::criminalinvestigation(criminalinvestigation_xb0).
+1.0::involvesdetective(criminalinvestigation_xb0,person_xb2).
+1.0::involvesdetective(criminalinvestigation_xb0,person_xb3).
+1.0::involvesdetective(criminalinvestigation_xb0,person_xb4).
+1.0::involvessuspect(criminalinvestigation_xb0,person_xb1).
+1.0::involveswitness(criminalinvestigation_xb0,person_xb0).
+1.0::isledby(criminalinvestigation_xb0,person_xb2).
+1.0::interrogation(interrogation_xb0).
+1.0::interrogation(interrogation_xb1).
+1.0::interrogation(interrogation_xb2).
+1.0::interrogation(interrogation_xb3).
+1.0::interrogation(interrogation_xb4).
+1.0::conductedby(interrogation_xb0,person_xb2).
+1.0::conductedby(interrogation_xb1,person_xb2).
+1.0::conductedby(interrogation_xb2,person_xb2).
+1.0::conductedby(interrogation_xb3,person_xb2).
+1.0::conductedby(interrogation_xb4,person_xb2).
+1.0::contributesto(interrogation_xb0,criminalinvestigation_xb0).
+1.0::contributesto(interrogation_xb1,criminalinvestigation_xb0).
+1.0::contributesto(interrogation_xb2,criminalinvestigation_xb0).
+1.0::contributesto(interrogation_xb3,criminalinvestigation_xb0).
+1.0::contributesto(interrogation_xb4,criminalinvestigation_xb0).
+1.0::questions(interrogation_xb0,person_xb0).
+1.0::questions(interrogation_xb1,person_xb0).
+1.0::questions(interrogation_xb2,person_xb0).
+1.0::questions(interrogation_xb3,person_xb0).
+1.0::questions(interrogation_xb4,person_xb0).
+1.0::detective(person_xb2).
+1.0::detective(person_xb3).
+1.0::detective(person_xb4).
+1.0::juniordetective(person_xb3).
+1.0::juniordetective(person_xb4).
+1.0::teamsup(person_xb3,person_xb4).
+1.0::teamsup(person_xb4,person_xb3).
+1.0::seniordetective(person_xb2).
+1.0::manages(person_xb2,person_xb3).
+1.0::manages(person_xb2,person_xb4).
+1.0::leaddetective(person_xb2).
+1.0::superintendent(person_xb2).
+1.0::suspect(person_xb1).
+1.0::witness(person_xb0).
+%intended2
+1.0::criminalinvestigation(criminalinvestigation_xc0).
+1.0::involvesdetective(criminalinvestigation_xc0,person_xc2).
+1.0::involvesdetective(criminalinvestigation_xc0,person_xc3).
+1.0::involvesdetective(criminalinvestigation_xc0,person_xc4).
+1.0::involvessuspect(criminalinvestigation_xc0,person_xc1).
+1.0::involveswitness(criminalinvestigation_xc0,person_xc0).
+1.0::isledby(criminalinvestigation_xc0,person_xc2).
+1.0::interrogation(interrogation_xc0).
+1.0::conductedby(interrogation_xc0,person_xc2).
+1.0::contributesto(interrogation_xc0,criminalinvestigation_xc0).
+1.0::questions(interrogation_xc0,person_xc0).
+1.0::detective(person_xc2).
+1.0::detective(person_xc3).
+1.0::detective(person_xc4).
+1.0::juniordetective(person_xc3).
+1.0::juniordetective(person_xc4).
+1.0::teamsup(person_xc3,person_xc4).
+1.0::teamsup(person_xc4,person_xc3).
+1.0::seniordetective(person_xc2).
+1.0::manages(person_xc2,person_xc3).
+1.0::manages(person_xc2,person_xc4).
+1.0::leaddetective(person_xc2).
+1.0::superintendent(person_xc2).
+1.0::suspect(person_xc1).
+1.0::witness(person_xc0).
+%unintended0 - no symmetric and reflexive - binover
+1.0::criminalinvestigation(criminalinvestigation_xd0).
+1.0::involvesdetective(criminalinvestigation_xd0,person_xd2).
+1.0::involvesdetective(criminalinvestigation_xd0,person_xd3).
+1.0::involvesdetective(criminalinvestigation_xd0,person_xd4).
+1.0::involvessuspect(criminalinvestigation_xd0,person_xd1).
+1.0::involveswitness(criminalinvestigation_xd0,person_xd0).
+1.0::isledby(criminalinvestigation_xd0,person_xd2).
+1.0::interrogation(interrogation_xd0).
+1.0::conductedby(interrogation_xd0,person_xd2).
+1.0::contributesto(interrogation_xd0,criminalinvestigation_xd0).
+1.0::questions(interrogation_xd0,person_xd0).
+1.0::detective(person_xd2).
+1.0::detective(person_xd3).
+1.0::detective(person_xd4).
+1.0::juniordetective(person_xd3).
+1.0::juniordetective(person_xd4).
+0.0::teamsup(person_xd3,person_xd3).
+0.0::teamsup(person_xd4,person_xd3).
+1.0::seniordetective(person_xd2).
+1.0::manages(person_xd2,person_xd3).
+1.0::manages(person_xd2,person_xd4).
+1.0::leaddetective(person_xd2).
+1.0::superintendent(person_xd2).
+1.0::suspect(person_xd1).
+1.0::witness(person_xd0).
+%unintended1 - no symmetric and reflexive - binover
+1.0::criminalinvestigation(criminalinvestigation_xe0).
+1.0::involvesdetective(criminalinvestigation_xe0,person_xe2).
+1.0::involvesdetective(criminalinvestigation_xe0,person_xe3).
+1.0::involvesdetective(criminalinvestigation_xe0,person_xe4).
+1.0::involvessuspect(criminalinvestigation_xe0,person_xe0).
+1.0::involvessuspect(criminalinvestigation_xe0,person_xe1).
+1.0::isledby(criminalinvestigation_xe0,person_xe2).
+1.0::detective(person_xe2).
+1.0::detective(person_xe3).
+1.0::detective(person_xe4).
+1.0::juniordetective(person_xe3).
+1.0::juniordetective(person_xe4).
+0.0::teamsup(person_xe3,person_xe4).
+0.0::teamsup(person_xe4,person_xe4).
+1.0::seniordetective(person_xe2).
+1.0::manages(person_xe2,person_xe3).
+1.0::manages(person_xe2,person_xe4).
+1.0::leaddetective(person_xe2).
+1.0::superintendent(person_xe2).
+1.0::suspect(person_xe0).
+1.0::suspect(person_xe1).
+%unintended2 - relove - relspec - decint
+1.0::criminalinvestigation(criminalinvestigation_xf0).
+1.0::criminalinvestigation(criminalinvestigation_xf1).
+0.0::involvesdetective(criminalinvestigation_xf0,person_xf1).
+0.0::involvesdetective(criminalinvestigation_xf1,person_xf0).
+0.0::involvesdetective(criminalinvestigation_xf1,person_xf2).
+1.0::involvessuspect(criminalinvestigation_xf0,person_xf0).
+1.0::involvessuspect(criminalinvestigation_xf1,person_xf1).
+1.0::involveswitness(criminalinvestigation_xf0,person_xf2).
+1.0::isledby(criminalinvestigation_xf0,person_xf2).
+1.0::isledby(criminalinvestigation_xf1,person_xf1).
+1.0::interrogation(interrogation_xf0).
+0.0::conductedby(interrogation_xf0,person_xf2).
+1.0::contributesto(interrogation_xf0,criminalinvestigation_xf0).
+1.0::questions(interrogation_xf0,person_xf2).
+1.0::detective(person_xf0).
+1.0::detective(person_xf1).
+1.0::detective(person_xf2).
+1.0::juniordetective(person_xf1).
+1.0::juniordetective(person_xf2).
+1.0::teamsup(person_xf1,person_xf2).
+1.0::teamsup(person_xf2,person_xf1).
+1.0::seniordetective(person_xf0).
+1.0::manages(person_xf0,person_xf1).
+1.0::manages(person_xf0,person_xf2).
+1.0::leaddetective(person_xf1).
+1.0::leaddetective(person_xf2).
+0.0::superintendent(person_xf2).
+1.0::suspect(person_xf0).
+1.0::suspect(person_xf1).
+1.0::witness(person_xf2).
+%7unintended3 - relove - relspec - decint
+1.0::criminalinvestigation(criminalinvestigation_xg0).
+1.0::criminalinvestigation(criminalinvestigation_xg1).
+0.0::involvesdetective(criminalinvestigation_xg0,person_xg1).
+0.0::involvesdetective(criminalinvestigation_xg1,person_xg0).
+0.0::involvesdetective(criminalinvestigation_xg1,person_xg2).
+1.0::involvessuspect(criminalinvestigation_xg0,person_xg0).
+1.0::involvessuspect(criminalinvestigation_xg1,person_xg1).
+1.0::involveswitness(criminalinvestigation_xg0,person_xg2).
+1.0::isledby(criminalinvestigation_xg0,person_xg2).
+1.0::isledby(criminalinvestigation_xg1,person_xg1).
+1.0::interrogation(interrogation_xg0).
+0.0::conductedby(interrogation_xg0,person_xg2).
+1.0::contributesto(interrogation_xg0,criminalinvestigation_xg0).
+1.0::questions(interrogation_xg0,person_xg2).
+1.0::detective(person_xg0).
+1.0::detective(person_xg1).
+1.0::detective(person_xg2).
+1.0::juniordetective(person_xg1).
+1.0::juniordetective(person_xg2).
+1.0::teamsup(person_xg1,person_xg2).
+1.0::teamsup(person_xg2,person_xg1).
+1.0::seniordetective(person_xg0).
+1.0::manages(person_xg0,person_xg1).
+1.0::manages(person_xg0,person_xg2).
+1.0::leaddetective(person_xg1).
+1.0::leaddetective(person_xg2).
+0.0::superintendent(person_xg0).
+0.0::superintendent(person_xg2).
+1.0::suspect(person_xg0).
+1.0::suspect(person_xg1).
+1.0::witness(person_xg2).
+
+
+
+
+
+
+%intended0
+1.0::criminalinvestigation(criminalinvestigation_a0).
+1.0::involvesdetective(criminalinvestigation_a0,person_a2).
+1.0::involvesdetective(criminalinvestigation_a0,person_a3).
+1.0::involvesdetective(criminalinvestigation_a0,person_a4).
+1.0::involvessuspect(criminalinvestigation_a0,person_a1).
+1.0::involveswitness(criminalinvestigation_a0,person_a0).
+1.0::isledby(criminalinvestigation_a0,person_a2).
+1.0::interrogation(interrogation_a0).
+1.0::interrogation(interrogation_a1).
+1.0::conductedby(interrogation_a0,person_a2).
+1.0::conductedby(interrogation_a1,person_a2).
+1.0::contributesto(interrogation_a0,criminalinvestigation_a0).
+1.0::contributesto(interrogation_a1,criminalinvestigation_a0).
+1.0::questions(interrogation_a0,person_a0).
+1.0::questions(interrogation_a1,person_a0).
+1.0::detective(person_a2).
+1.0::detective(person_a3).
+1.0::detective(person_a4).
+1.0::juniordetective(person_a3).
+1.0::juniordetective(person_a4).
+1.0::teamsup(person_a3,person_a4).
+1.0::teamsup(person_a4,person_a3).
+1.0::seniordetective(person_a2).
+1.0::manages(person_a2,person_a3).
+1.0::manages(person_a2,person_a4).
+1.0::leaddetective(person_a2).
+1.0::superintendent(person_a2).
+1.0::suspect(person_a1).
+1.0::witness(person_a0).
+
+%intended1
+1.0::criminalinvestigation(criminalinvestigation_b0).
+1.0::involvesdetective(criminalinvestigation_b0,person_b2).
+1.0::involvesdetective(criminalinvestigation_b0,person_b3).
+1.0::involvesdetective(criminalinvestigation_b0,person_b4).
+1.0::involvessuspect(criminalinvestigation_b0,person_b1).
+1.0::involveswitness(criminalinvestigation_b0,person_b0).
+1.0::isledby(criminalinvestigation_b0,person_b2).
+1.0::interrogation(interrogation_b0).
+1.0::interrogation(interrogation_b1).
+1.0::interrogation(interrogation_b2).
+1.0::interrogation(interrogation_b3).
+1.0::interrogation(interrogation_b4).
+1.0::conductedby(interrogation_b0,person_b2).
+1.0::conductedby(interrogation_b1,person_b2).
+1.0::conductedby(interrogation_b2,person_b2).
+1.0::conductedby(interrogation_b3,person_b2).
+1.0::conductedby(interrogation_b4,person_b2).
+1.0::contributesto(interrogation_b0,criminalinvestigation_b0).
+1.0::contributesto(interrogation_b1,criminalinvestigation_b0).
+1.0::contributesto(interrogation_b2,criminalinvestigation_b0).
+1.0::contributesto(interrogation_b3,criminalinvestigation_b0).
+1.0::contributesto(interrogation_b4,criminalinvestigation_b0).
+1.0::questions(interrogation_b0,person_b0).
+1.0::questions(interrogation_b1,person_b0).
+1.0::questions(interrogation_b2,person_b0).
+1.0::questions(interrogation_b3,person_b0).
+1.0::questions(interrogation_b4,person_b0).
+1.0::detective(person_b2).
+1.0::detective(person_b3).
+1.0::detective(person_b4).
+1.0::juniordetective(person_b3).
+1.0::juniordetective(person_b4).
+1.0::teamsup(person_b3,person_b4).
+1.0::teamsup(person_b4,person_b3).
+1.0::seniordetective(person_b2).
+1.0::manages(person_b2,person_b3).
+1.0::manages(person_b2,person_b4).
+1.0::leaddetective(person_b2).
+1.0::superintendent(person_b2).
+1.0::suspect(person_b1).
+1.0::witness(person_b0).
+
+%intended2
+1.0::criminalinvestigation(criminalinvestigation_c0).
+1.0::involvesdetective(criminalinvestigation_c0,person_c2).
+1.0::involvesdetective(criminalinvestigation_c0,person_c3).
+1.0::involvesdetective(criminalinvestigation_c0,person_c4).
+1.0::involvessuspect(criminalinvestigation_c0,person_c1).
+1.0::involveswitness(criminalinvestigation_c0,person_c0).
+1.0::isledby(criminalinvestigation_c0,person_c2).
+1.0::interrogation(interrogation_c0).
+1.0::conductedby(interrogation_c0,person_c2).
+1.0::contributesto(interrogation_c0,criminalinvestigation_c0).
+1.0::questions(interrogation_c0,person_c0).
+1.0::detective(person_c2).
+1.0::detective(person_c3).
+1.0::detective(person_c4).
+1.0::juniordetective(person_c3).
+1.0::juniordetective(person_c4).
+1.0::teamsup(person_c3,person_c4).
+1.0::teamsup(person_c4,person_c3).
+1.0::seniordetective(person_c2).
+1.0::manages(person_c2,person_c3).
+1.0::manages(person_c2,person_c4).
+1.0::leaddetective(person_c2).
+1.0::superintendent(person_c2).
+1.0::suspect(person_c1).
+1.0::witness(person_c0).
+
+%%%% intended_AssCyc_isled (simulation_a)
+1.0::isledby(criminalinvestigation_a0,person_a2).
+1.0::conductedby(interrogation_a0,person_a2).
+1.0::contributesto(interrogation_a0,criminalinvestigation_a0).
+%%%% unintended_AssCyc_isled (simulation_c)
+0.0::isledby(criminalinvestigation_c0,person_c3).
+0.0::isledby(criminalinvestigation_c1,person_c4).
+1.0::conductedby(interrogation_c0,person_c2).
+1.0::conductedby(interrogation_c1,person_c2).
+1.0::contributesto(interrogation_c0,criminalinvestigation_c0).
+1.0::contributesto(interrogation_c1,criminalinvestigation_c1).
+%%%% unintended_AssCyc_isled (simulation_d)
+0.0::isledby(criminalinvestigation_d0,person_d6).
+0.0::isledby(criminalinvestigation_d1,person_d2).
+1.0::conductedby(interrogation_d0,person_d6).
+1.0::questions(interrogation_d0,person_d2).
+
+%%%% intended_AssCyc_isled (simulation_a) - INV
+1.0::not_isledby(criminalinvestigation_a0,person_a2).
+1.0::conductedby(interrogation_a0,person_a2).
+1.0::contributesto(interrogation_a0,criminalinvestigation_a0).
+%%%% unintended_AssCyc_isled (simulation_c)
+0.0::not_isledby(criminalinvestigation_c0,person_c3).
+0.0::not_isledby(criminalinvestigation_c1,person_c4).
+1.0::conductedby(interrogation_c0,person_c2).
+1.0::conductedby(interrogation_c1,person_c2).
+1.0::contributesto(interrogation_c0,criminalinvestigation_c0).
+1.0::contributesto(interrogation_c1,criminalinvestigation_c1).
+%%%% unintended_AssCyc_isled (simulation_d) 
+0.0::not_isledby(criminalinvestigation_d0,person_d6).
+0.0::not_isledby(criminalinvestigation_d1,person_d2).
+1.0::conductedby(interrogation_d0,person_d6).
+1.0::questions(interrogation_d0,person_d2).
+
+%%%% intended_AssCyc_involvewitness (simulation_b)
+1.0::involveswitness(criminalinvestigation_b00,person_b20).
+1.0::questions(interrogation_b00,person_b20).
+1.0::contributesto(interrogation_b00,criminalinvestigation_b00).
+%%%% unintended_AssCyc_involveswitness (simulation_d)
+0.0::involveswitness(criminalinvestigation_d00,person_d40).
+0.0::involveswitness(criminalinvestigation_d10,person_d10).
+1.0::contributesto(interrogation_d00,criminalinvestigation_d00).
+1.0::contributesto(interrogation_d10,criminalinvestigation_d10).
+1.0::questions(interrogation_d00,person_d10).
+1.0::questions(interrogation_d10,person_d40).
+%%%% unintended_AssCyc_involveswitness (simulation_e)
+0.0::involveswitness(criminalinvestigation_e0,person_e6).
+0.0::involveswitness(criminalinvestigation_e1,person_e2).
+1.0::questions(interrogation_e0,person_e2).
+
+%%%% intended_AssCyc_involvewitness (simulation_b) - INV
+1.0::not_involveswitness(criminalinvestigation_b00,person_b20).
+1.0::questions(interrogation_b00,person_b20).
+1.0::contributesto(interrogation_b00,criminalinvestigation_b00).
+%%%% unintended_AssCyc_involveswitness (simulation_d)
+0.0::not_involveswitness(criminalinvestigation_d00,person_d40).
+0.0::not_involveswitness(criminalinvestigation_d10,person_d10).
+1.0::contributesto(interrogation_d00,criminalinvestigation_d00).
+1.0::contributesto(interrogation_d10,criminalinvestigation_d10).
+1.0::questions(interrogation_d00,person_d10).
+1.0::questions(interrogation_d10,person_d40).
+%%%% unintended_AssCyc_involveswitness (simulation_e)
+0.0::not_involveswitness(criminalinvestigation_e0,person_e6).
+0.0::not_involveswitness(criminalinvestigation_e1,person_e2).
+1.0::questions(interrogation_e0,person_e2).
+
+%%%% intended_DecInt_superintendent (simulation_b)
+1.0::superintendent(person_b200).
+1.0::leaddetective(person_b200).
+1.0::seniordetective(person_b200).
+%%%% unintended_DecInt_superintendent (simulation_f)
+1.0::leaddetective(person_f0).
+0.0::superintendent(person_f0).
+%%%% unintended_DecInt_superintendent (simulation_g)
+1.0::seniordetective(person_g0). 
+0.0::superintendent(person_g0).
+
+%%%% intended_RelOver_conductedby (simulation_a)
+1.0::conductedby(interrogation_a00,person_a00).
+1.0::questions(interrogation_a00,person_a01).
+%%%% unintended_RelOver_conductedby (simulation_d)
+0.0::conductedby(interrogation_d000,person_d000).
+1.0::questions(interrogation_d000,person_d000).
+
+%%%% intended_RelOver_conductedby (simulation_a) - INV
+0.0::not_conductedby(interrogation_a00,person_a00).
+1.0::questions(interrogation_a00,person_a01).
+%%%% unintended_RelOver_conductedby (simulation_d)
+1.0::not_conductedby(interrogation_d000,person_d000).
+1.0::questions(interrogation_d000,person_d000).
+
+%%%% intended_RelOver_involvesdetective (simulation_a)
+1.0::involvesdetective(criminalinvestigation_a000,person_a000).
+1.0::involvessuspect(criminalinvestigation_a000,person_a001).
+%%%% unintended_RelOver_involvesdetective  (simulation_d)
+0.0::involvesdetective(criminalinvestigation_d0000,person_d0000).
+1.0::involvessuspect(criminalinvestigation_d0000,person_d0000).
+
+%%%% intended_RelOver_involvesdetective (simulation_a) - INV
+0.0::not_involvesdetective(criminalinvestigation_a000,person_a000).
+1.0::involvessuspect(criminalinvestigation_a000,person_a001).
+%%%% unintended_RelOver_involvesdetective  (simulation_d)
+1.0::not_involvesdetective(criminalinvestigation_d0000,person_d0000).
+1.0::involvessuspect(criminalinvestigation_d0000,person_d0000).
+
+%%%% intended_RelSpec_involvesdetective (simulation_a)
+1.0::isledby(criminalinvestigation_a0000,person_a0000).
+1.0::involvesdetective(criminalinvestigation_a0000,person_a0000).
+%%%% unintended_RelSpec_involvesdetective (simulation_c)
+1.0::isledby(criminalinvestigation_c00,person_c00).
+0.0::involvesdetective(criminalinvestigation_c00,person_c01).
+
+%%%% intended_RelComp_manages (simulation_b)
+1.0::teamsup(person_b0000,person_b00001). 
+1.0::manages(person_b00002,person_b0000). 
+1.0::manages(person_b00002,person_b00001). 
+1.0::manages_(person_b00002,person_b00001). 
+1.0::manages_(person_b00002,person_b0000). 
+%%%% unintended_RelComp_manages (simulation_i)
+1.0::teamsup(person_i0,person_i1). 
+1.0::manages_(person_i2,person_i0). 
+0.0::manages(person_i2,person_i0). 
+1.0::teamsup(person_i3,person_i4). 
+1.0::manages_(person_i5,person_i4). 
+0.0::manages(person_i5,person_i4). 
+
+%%%% intended_BinOver_teamsup (+,+) (simulation_h) - here we have a little conflict with RelComp
+1.0::teamsup(person_h0,person_h1).
+1.0::teamsup(person_h1,person_h0).
+1.0::teamsup_(person_h0,person_h1).
+1.0::teamsup_(person_h1,person_h0).
+%%% unintended_BinOver_teamsup (simulation_h) - symmetric
+0.0::teamsup(person_h2,person_h3).
+1.0::teamsup_(person_h2,person_h3).
+% antyreflexive
+0.0::teamsup(person20,person20).
+1.0::teamsup_(person20,person20).
+
+% transitive (three options _teamsup (+,+), (+,-), (-,+)) - more examples
+% teamsup(A,B) :- teamsup_(B,C), teamsup_(A,C)
+% 1.0::teamsup(person7,person8).
+% 0.0::teamsup(person8,person9).
+% 0.0::teamsup(person7,person9).
+% 1.0::teamsup_(person7,person8).
+% 1.0::teamsup_(person8,person9).
+% 1.0::teamsup_(person7,person9).
+
+% 0.0::teamsup(person70,person80).
+% 0.0::teamsup(person80,person10).
+% 0.0::teamsup(person70,person90).
+% 1.0::teamsup_(person70,person80).
+% 1.0::teamsup_(person80,person10).
+% 1.0::teamsup_(person70,person90).
+
+% 0.0::teamsup(person700,person800).
+% 0.0::teamsup(person800,person100).
+% 1.0::teamsup_(person700,person800).
+% 1.0::teamsup_(person800,person100).
+
+
+
+
+
+
+
+
+
+
+
+
